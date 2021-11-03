@@ -1,7 +1,9 @@
 import { IocSetup } from '@eusebiu_gagea/mem';
-import AppointmentRepository from '../infrastructure/repos/AppointmentRepository';
-import AppointmentStatusRepository from '../infrastructure/repos/AppointmentStatusRepository';
 import { Connection } from 'typeorm';
+
+import AppointmentRepository from './repos/AppointmentRepository';
+import AppointmentStatusRepository from './repos/AppointmentStatusRepository';
+import DayAvailabilityRepository from './repos/DayAvailabilityRepository';
 
 const iocSetup: IocSetup = (container) => {
   container
@@ -12,6 +14,9 @@ const iocSetup: IocSetup = (container) => {
     .toDynamicValue(() =>
       container.get(Connection).getCustomRepository(AppointmentStatusRepository),
     );
+  container
+    .bind<DayAvailabilityRepository>(DayAvailabilityRepository)
+    .toDynamicValue(() => container.get(Connection).getCustomRepository(DayAvailabilityRepository));
 };
 
 export default iocSetup;

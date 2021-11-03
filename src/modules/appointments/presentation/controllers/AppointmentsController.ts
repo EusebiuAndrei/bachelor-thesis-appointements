@@ -1,5 +1,6 @@
+import { CancelAppointmentsCommand } from './../../application/commands/CancelAppointmentsCommand';
 import { ProposeAppointmentCommand } from './../../application/commands/ProposeAppointmentCommand';
-import { Controller, Post, MemMediator, Ok, createEvent, Use } from '@eusebiu_gagea/mem';
+import { Controller, Post, MemMediator, Ok, createEvent, Use, Delete } from '@eusebiu_gagea/mem';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import ProposeAppointmentDto from '../dtos/ProposeAppointmentDto';
@@ -18,6 +19,19 @@ class AppointmentsController {
 
     const result = await this._mediator.send(
       createEvent(ProposeAppointmentCommand, { ...proposeAppointmentDto, studentId }),
+    );
+
+    return new Ok(result);
+  }
+
+  @Use(authorize)
+  @Delete('/:appointmentId')
+  public async cancelOne(req: Request, res: Response) {
+    const userId = (req.user as any).id;
+    const appointmentId = (req.params as any).appointmentId as number;
+
+    const result = await this._mediator.send(
+      createEvent(CancelAppointmentsCommand, { userId, appointmentId }),
     );
 
     return new Ok(result);

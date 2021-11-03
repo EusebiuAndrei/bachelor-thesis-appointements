@@ -6,7 +6,7 @@ import { authorize, tryMiddleware } from '../../../shared/infra/http/middlewares
 
 @injectable()
 @Use(authorize, tryMiddleware)
-@Controller('hello')
+@Controller('day')
 class HelloController {
   @inject(MemMediator) private _mediator: MemMediator;
 

@@ -1,16 +1,35 @@
+import User from '../../../models/User';
 import Appointment from '../../../models/Appointment';
 
+/*
+  AppointmentProposedEvent -> handler for this to automatically Approve or Reject an Appointment
+  Appointment Approved/Rejected/Canceled Event -> handler for sending an appropriate mail to parties
+  ApproveAppointmentCommand, RejectAppointmentCommand -> only for appointments with startDate out of the professor schedule
+  CancelAppointmentsForDay -> only for professor 
+
+  Check that constraint error --- create more appointments
+*/
+
+export const isStudent = (user: User) => user.role.code === 'STUDENT';
+export const isProfessor = (user: User) => user.role.code === 'PROFESSOR';
+
 export const proposeAppointment = (appointment: Appointment) => {
-  if (appointment.student.role.code === 'PROFESSOR') {
+  if (isProfessor(appointment.student)) {
     throw new AppointmentNotProposedByStudentException();
   }
 
-  if (appointment.professor.role.code === 'STUDENT') {
+  if (isStudent(appointment.professor)) {
     throw new AppointmentNotSentToProfessorException();
   }
 
   if (appointment.duration > 45) {
     throw new AppointmentDurationExceededException();
+  }
+};
+
+export const cancelAppointment = (appointment: Appointment, userId: number) => {
+  if (appointment.professor.id !== userId && appointment.student.id !== userId) {
+    throw new NotAppointmentParticipantException();
   }
 };
 
@@ -29,6 +48,25 @@ class AppointmentNotSentToProfessorException extends Error {
 class AppointmentDurationExceededException extends Error {
   constructor() {
     super(`An appointment shouldn't be longer than 45 minutes`);
+  }
+}
+
+class NotAppointmentParticipantException extends Error {
+  constructor() {
+    super(`An appointment can be canceled only by a participant`);
+  }
+}
+
+// Not from here
+export const checkProfessor = (user: User) => {
+  if (isStudent(user)) {
+    throw new ProfessorRestrictedException();
+  }
+};
+
+class ProfessorRestrictedException extends Error {
+  constructor() {
+    super(`This operation is available only for professors`);
   }
 }
 
