@@ -1,5 +1,7 @@
 import 'reflect-metadata';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+
+import Role from './Role';
 
 @Entity()
 class User {
@@ -17,6 +19,10 @@ class User {
 
   @Column()
   password: string;
+
+  @OneToOne(() => Role, { cascade: true, nullable: true })
+  @JoinColumn()
+  role: Role;
 }
 
 export default User;

@@ -7,6 +7,7 @@ import passport from 'passport';
 import { Logger } from '../../../services';
 import { port } from '../../../config/index';
 import applyJWTStrategy from './http/auth/jwtStrategy';
+import { logErrors } from './http/middlewares';
 
 export const corsUrl = process.env.CORS_URL;
 @injectable()
@@ -28,7 +29,7 @@ class Server extends ExpressServer {
   }
 
   async setupErrorMiddlewares(): Promise<void> {
-    return;
+    this.useErrorMiddleware(logErrors);
   }
 }
 

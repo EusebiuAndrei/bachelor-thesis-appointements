@@ -36,3 +36,9 @@ https://hackernoon.com/hammering-at-clean-architecture-1wbr3cgo
 
 https://reposhub.com/javascript/boilerplates/luizomf-clean-architecture-api-boilerplate.html 
 https://www.freecodecamp.org/news/a-typescript-stab-at-clean-architecture-b51fbb16a304/
+
+Professor token
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM1OTU1NDg1LCJleHAiOjE2NDU5NTU0ODV9.m3RanYpsPxItQowxSGXMrFZwPBliQZ_SJVSE-hctycs
+
+Student token
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM1OTU1NTI2LCJleHAiOjE2NDU5NTU1MjZ9.cDJCxv42o1Hwtwrv05Xy7TXXHsecMmgoqHb9F9r5EQ4
