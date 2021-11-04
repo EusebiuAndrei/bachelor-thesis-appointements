@@ -2,7 +2,8 @@ import { createLogger, transports, format } from 'winston';
 import fs from 'fs';
 import path from 'path';
 import DailyRotateFile from 'winston-daily-rotate-file';
-import { environment, logs } from '../config';
+import { environment, logs } from '../../../../config';
+import ILogger from '../../application/logger/ILogger';
 
 let dir = logs.logDirectory;
 if (!dir) dir = path.resolve('logs');
@@ -32,7 +33,7 @@ const options = {
   },
 };
 
-export default createLogger({
+const logger = createLogger({
   transports: [
     new transports.Console({
       level: logLevel,
@@ -42,3 +43,5 @@ export default createLogger({
   exceptionHandlers: [new DailyRotateFile(options.file)],
   exitOnError: false, // do not exit on handled exceptions
 });
+
+export default logger as ILogger;

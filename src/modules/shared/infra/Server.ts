@@ -4,10 +4,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { injectable } from 'inversify';
 import passport from 'passport';
-import { Logger } from '../../../services';
 import { port } from '../../../config/index';
 import applyJWTStrategy from './http/auth/jwtStrategy';
 import { logErrors } from './http/middlewares';
+import Logger from './logger/Logger';
 
 export const corsUrl = process.env.CORS_URL;
 @injectable()
