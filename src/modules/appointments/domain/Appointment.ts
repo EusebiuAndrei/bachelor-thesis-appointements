@@ -33,6 +33,26 @@ export const cancelAppointment = (appointment: Appointment, userId: number) => {
   }
 };
 
+export const approveAppointment = (appointment: Appointment, userId: number) => {
+  if (appointment.professor.id !== userId && appointment.student.id !== userId) {
+    throw new NotAppointmentParticipantException();
+  }
+
+  if (appointment.student.id === userId) {
+    throw new ProfessorRestrictedException();
+  }
+};
+
+export const rejectAppointment = (appointment: Appointment, userId: number) => {
+  if (appointment.professor.id !== userId && appointment.student.id !== userId) {
+    throw new NotAppointmentParticipantException();
+  }
+
+  if (appointment.student.id === userId) {
+    throw new ProfessorRestrictedException();
+  }
+};
+
 class AppointmentNotProposedByStudentException extends Error {
   constructor() {
     super('An appointment should only be proposed by a student');

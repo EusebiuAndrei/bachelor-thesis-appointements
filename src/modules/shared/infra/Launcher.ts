@@ -6,6 +6,8 @@ import AppointmentsIocSetup from '../../appointments/infrastructure/IocSetup';
 import path from 'path';
 import { Connection, createConnection, getConnectionOptions } from 'typeorm';
 import models from '../../../models';
+import IEmailService from '../application/email/IEmalService';
+import EmailService from './email/EmailService';
 
 class Launcher extends BaseLauncher {
   public async setup(): Promise<void> {
@@ -13,6 +15,8 @@ class Launcher extends BaseLauncher {
     Object.assign(connectionOptions, { entities: models });
     const connection = await createConnection(connectionOptions);
     this.container.bind<Connection>(Connection).toDynamicValue(() => connection);
+
+    this.container.bind<IEmailService>(EmailService).toDynamicValue(() => new EmailService());
 
     await HelloIocSetup(this.container);
     await UsersIocSetup(this.container);

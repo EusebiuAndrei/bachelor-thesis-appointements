@@ -1,3 +1,4 @@
+import { AppointmentStatusEnum } from './../../../../models/AppointmentStatus';
 import { proposeAppointment } from './../../domain/Appointment';
 import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
@@ -23,19 +24,21 @@ class ProposeAppointmentCommandHandler implements Handler<ProposeAppointmentComm
   @inject(UserRepository) private _userRepo: UserRepository;
 
   async handle(command: ProposeAppointmentCommand) {
-    const appointment = new Appointment();
+    const professor = await this._userRepo.findOne(command.professorId, {
+      relations: ['role'],
+    });
+    const student = await this._userRepo.findOne(command.studentId, {
+      relations: ['role'],
+    });
+    const status = await this._appointmentsStatusRepo.findOne(AppointmentStatusEnum.APPROVED);
 
+    const appointment = new Appointment();
     appointment.startDate = command.startDate;
     appointment.duration = command.duration;
     appointment.description = command.description;
-
-    appointment.professor = await this._userRepo.findOne(command.professorId, {
-      relations: ['role'],
-    });
-    appointment.student = await this._userRepo.findOne(command.studentId, {
-      relations: ['role'],
-    });
-    appointment.status = await this._appointmentsStatusRepo.findOne(1);
+    appointment.professor = professor;
+    appointment.student = student;
+    appointment.status = status;
 
     proposeAppointment(appointment);
 

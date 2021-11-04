@@ -37,8 +37,31 @@ https://hackernoon.com/hammering-at-clean-architecture-1wbr3cgo
 https://reposhub.com/javascript/boilerplates/luizomf-clean-architecture-api-boilerplate.html 
 https://www.freecodecamp.org/news/a-typescript-stab-at-clean-architecture-b51fbb16a304/
 
+https://codeopinion.com/why-use-mediatr-3-reasons-why-and-1-reason-not/
+https://hackernoon.com/applying-clean-architecture-on-web-application-with-modular-pattern-7b11f1b89011 
+
+https://adico.tech/2019/12/06/clean-%F0%9F%A7%BC-architectured-rest-api-using-nestjs-as-3rd-party-%F0%9F%A5%B3/#fromHistory
+
+Middleware System
+https://medium.com/@pragyan88/writing-middleware-composition-and-currying-elegance-in-javascript-8b15c98a541b
+https://evertpot.com/generic-middleware/ 
+https://dev.to/lcanady/make-a-typescript-middleware-engine-21kb 
+
+https://github.com/otasoft/microservice-template
+
+FINALISTS
+https://github.com/Sairyss/domain-driven-hexagon
+https://github.com/hvpaiva/clean-architecture-nestjs 
+https://github.com/pvarentsov/typescript-clean-architecture 
+https://github.com/stemmlerjs/white-label
+https://github.com/stemmlerjs/ddd-forum 
+https://adico.tech/2019/12/06/clean-%F0%9F%A7%BC-architectured-rest-api-using-nestjs-as-3rd-party-%F0%9F%A5%B3/#fromHistory
+
+
 Professor token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM1OTU1NDg1LCJleHAiOjE2NDU5NTU0ODV9.m3RanYpsPxItQowxSGXMrFZwPBliQZ_SJVSE-hctycs
 
 Student token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM1OTU1NTI2LCJleHAiOjE2NDU5NTU1MjZ9.cDJCxv42o1Hwtwrv05Xy7TXXHsecMmgoqHb9F9r5EQ4
+
+

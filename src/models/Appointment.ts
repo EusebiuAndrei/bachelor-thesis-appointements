@@ -17,15 +17,15 @@ class Appointment {
   @Column()
   description: string;
 
-  @OneToOne(() => AppointmentStatus, { cascade: true })
+  @OneToOne(() => AppointmentStatus, { cascade: true, createForeignKeyConstraints: false })
   @JoinColumn()
   status: AppointmentStatus;
 
-  @OneToOne(() => User, { cascade: true })
+  @OneToOne(() => User, { cascade: true, createForeignKeyConstraints: false })
   @JoinColumn()
   professor: User;
 
-  @OneToOne(() => User, { cascade: true })
+  @OneToOne(() => User, { cascade: true, createForeignKeyConstraints: false })
   @JoinColumn()
   student: User;
 }
