@@ -8,7 +8,7 @@ import { inject, injectable } from 'inversify';
 class AuthController {
   @inject(MemMediator) private _mediator: MemMediator;
 
-  @Post('/:userId')
+  @Post(':userId')
   public async login(req: Request, res: Response) {
     const userId = (req.params as any).userId as number;
     const result = await this._mediator.send(createEvent(GetUserByIdQuery, { userId }));

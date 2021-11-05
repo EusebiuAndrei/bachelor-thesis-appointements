@@ -46,7 +46,7 @@ class AppointmentsController {
   }
 
   @Use(authorize)
-  @Post('/:appointmentId/approve')
+  @Post(':appointmentId/approve')
   public async approveAppointment(req: Request, res: Response) {
     const userId = (req.user as any).id;
     const appointmentId = (req.params as any).appointmentId as number;
@@ -59,7 +59,7 @@ class AppointmentsController {
   }
 
   @Use(authorize)
-  @Post('/:appointmentId/reject')
+  @Post(':appointmentId/reject')
   public async rejectAppointment(req: Request, res: Response) {
     const userId = (req.user as any).id;
     const appointmentId = (req.params as any).appointmentId as number;
@@ -72,7 +72,7 @@ class AppointmentsController {
   }
 
   @Use(authorize)
-  @Delete('/:appointmentId')
+  @Delete(':appointmentId')
   public async cancelOne(req: Request, res: Response) {
     const userId = (req.user as any).id;
     const appointmentId = (req.params as any).appointmentId as number;

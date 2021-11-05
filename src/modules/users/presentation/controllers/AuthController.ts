@@ -10,7 +10,7 @@ import { RegisterCommand } from '../../application/commands/RegisterCommand';
 class AuthController {
   @inject(MemMediator) private _mediator: MemMediator;
 
-  @Post('/login')
+  @Post('login')
   public async login(req: Request, res: Response) {
     const { email, password } = req.body;
     const result = await this._mediator.send(createEvent(LoginCommand, { email, password }));
@@ -18,7 +18,7 @@ class AuthController {
     return new Ok(result);
   }
 
-  @Post('/register')
+  @Post('register')
   public async register(req: Request, res: Response) {
     const result = await this._mediator.send(createEvent(RegisterCommand, { user: req.body }));
 
