@@ -1,9 +1,9 @@
 ---
-to: app/controllers/<%= h.changeCase.pascal(name) %>Controller.ts
+to: src/modules/<%= module %>/presentation/controllers/<%= h.changeCase.pascal(name) %>Controller.ts
 ---
 import { Controller, Created, Delete, Get, Ok, Patch, Post, Put } from '@eusebiu_gagea/mem';
 
-@Controller
+@Controller('<%= name %>')
 class <%= h.changeCase.pascal(name) %>Controller {
   @Get()
   public async findAll() {
@@ -36,3 +36,4 @@ class <%= h.changeCase.pascal(name) %>Controller {
   }
 }
 
+export default <%= h.changeCase.pascal(name) %>Controller;
