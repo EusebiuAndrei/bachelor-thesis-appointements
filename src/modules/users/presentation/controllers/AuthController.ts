@@ -1,4 +1,4 @@
-import { Controller, Post, MemMediator, Ok, createEvent } from '@eusebiu_gagea/mem';
+import { Controller, Post, MemMediator, HttpOk, createEvent } from '@eusebiu_gagea/mem';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 
@@ -15,14 +15,14 @@ class AuthController {
     const { email, password } = req.body;
     const result = await this._mediator.send(createEvent(LoginCommand, { email, password }));
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 
   @Post('register')
   public async register(req: Request, res: Response) {
     const result = await this._mediator.send(createEvent(RegisterCommand, { user: req.body }));
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 }
 

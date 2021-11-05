@@ -1,5 +1,5 @@
 import { GetUserByIdQuery } from './../../application/queries/GetUserByIdQuery';
-import { Controller, Post, MemMediator, Ok, createEvent } from '@eusebiu_gagea/mem';
+import { Controller, Post, MemMediator, HttpOk, createEvent } from '@eusebiu_gagea/mem';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 
@@ -13,7 +13,7 @@ class AuthController {
     const userId = (req.params as any).userId as number;
     const result = await this._mediator.send(createEvent(GetUserByIdQuery, { userId }));
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 }
 

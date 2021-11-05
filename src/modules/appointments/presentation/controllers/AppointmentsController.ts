@@ -7,11 +7,12 @@ import {
   Controller,
   Post,
   MemMediator,
-  Ok,
+  HttpOk,
   createEvent,
   Use,
   Delete,
   Get,
+  HttpCreated,
 } from '@eusebiu_gagea/mem';
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
@@ -29,7 +30,7 @@ class AppointmentsController {
     const userId = (req.user as any).id;
     const result = await this._mediator.send(createEvent(GetAppointmentsQuery, { userId }));
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 
   @Use(authorize)
@@ -42,7 +43,7 @@ class AppointmentsController {
       createEvent(ProposeAppointmentCommand, { ...proposeAppointmentDto, studentId }),
     );
 
-    return new Ok(result);
+    return HttpCreated(result);
   }
 
   @Use(authorize)
@@ -55,7 +56,7 @@ class AppointmentsController {
       createEvent(ApproveAppointmentCommand, { userId, appointmentId }),
     );
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 
   @Use(authorize)
@@ -68,7 +69,7 @@ class AppointmentsController {
       createEvent(RejectAppointmentCommand, { userId, appointmentId }),
     );
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 
   @Use(authorize)
@@ -81,7 +82,7 @@ class AppointmentsController {
       createEvent(CancelAppointmentCommand, { userId, appointmentId }),
     );
 
-    return new Ok(result);
+    return HttpOk(result);
   }
 }
 
