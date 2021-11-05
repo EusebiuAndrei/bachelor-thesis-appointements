@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import UserRepository from '../../infrastructure/repos/UserRepository';
-import User from '../../../../models/User';
+import User from '../../domain/User';
 import RegisterUserDto from '../dtos/RegisterUserDto';
 import RoleRepository from '../../infrastructure/repos/RoleRepository';
 

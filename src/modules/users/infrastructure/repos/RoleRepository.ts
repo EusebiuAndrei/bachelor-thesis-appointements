@@ -1,9 +1,10 @@
 import { injectable } from 'inversify';
 import { EntityRepository, Repository } from 'typeorm';
-import Role from '../../../../models/Role';
+import Role from '../../domain/Role';
+import RoleEntity from '../../../shared/infra/db/typeorm/schemas/RoleEntity';
 
 @injectable()
-@EntityRepository(Role)
+@EntityRepository(RoleEntity)
 class RoleRepository extends Repository<Role> {}
 
 export default RoleRepository;

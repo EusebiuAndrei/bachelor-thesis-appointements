@@ -1,9 +1,9 @@
-import { checkProfessor } from './../../domain/Appointment';
-import DayAvailability, { DayOfWeek } from './../../../../models/DayAvailability';
+import DayAvailability, { DayOfWeek } from '../../domain/DayAvailability';
 import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import UserRepository from '../../../users/infrastructure/repos/UserRepository';
 import DayAvailabilityRepository from '../../infrastructure/repos/DayAvailabilityRepository';
+import UserService from '../../../users/domain/services/UserService';
 
 @Command()
 export class CreateDayAvailabilityCommand {
@@ -23,7 +23,7 @@ class CreateDayAvailabilityCommandHandler implements Handler<CreateDayAvailabili
   async handle(command: CreateDayAvailabilityCommand) {
     const user = await this._userRepo.findOne(command.userId, { relations: ['role'] });
     console.log(user);
-    checkProfessor(user);
+    UserService(user).checkProfessor();
 
     const dayAvailability = new DayAvailability();
     dayAvailability.day = command.day;

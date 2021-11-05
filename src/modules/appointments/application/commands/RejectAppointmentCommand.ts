@@ -1,6 +1,6 @@
 import { AppointmentStatusChangedEvent } from './../events/AppointmentStatusChangedEvent';
-import { AppointmentStatusEnum } from './../../../../models/AppointmentStatus';
-import { rejectAppointment } from './../../domain/Appointment';
+import { AppointmentStatusEnum } from '../../domain/AppointmentStatus';
+import AppointmentsService from '../../domain/services/AppointmentService';
 import { Handler, CommandHandler, Command, MemMediator, createEvent } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import AppointmentRepository from '../../infrastructure/repos/AppointmentRepository';
@@ -28,7 +28,7 @@ class RejectAppointmentCommandHandler implements Handler<RejectAppointmentComman
     );
     appointment.status = rejectedStatus;
 
-    rejectAppointment(appointment, command.userId);
+    AppointmentsService(appointment).rejectAppointment(command.userId);
 
     await this._appointmentsRepo.save(appointment);
 

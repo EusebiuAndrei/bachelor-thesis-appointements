@@ -7,13 +7,7 @@
   "database": "projecto",
   "synchronize": true,
   "logging": false,
-  "entities": [
-    "src/models/**/*.ts"
-  ],
-  "migrations": [
-    "src/migration/**/*.ts"
-  ],
-  "subscribers": [
-    "src/subscriber/**/*.ts"
-  ]
+  "entities": ["src/modules/shared/infra/db/typeorm/schemas/**/*.ts"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"]
 }

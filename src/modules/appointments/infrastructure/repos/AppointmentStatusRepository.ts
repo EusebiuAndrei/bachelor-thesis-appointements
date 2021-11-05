@@ -1,9 +1,10 @@
 import { injectable } from 'inversify';
 import { EntityRepository, Repository } from 'typeorm';
-import AppointmentStatus from '../../../../models/AppointmentStatus';
+import AppointmentStatus from '../../domain/AppointmentStatus';
+import AppointmentStatusEntity from '../../../shared/infra/db/typeorm/schemas/AppointmentStatusEntity';
 
 @injectable()
-@EntityRepository(AppointmentStatus)
+@EntityRepository(AppointmentStatusEntity)
 class AppointmentStatusRepository extends Repository<AppointmentStatus> {}
 
 export default AppointmentStatusRepository;

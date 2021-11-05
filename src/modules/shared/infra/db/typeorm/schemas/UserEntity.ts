@@ -1,11 +1,13 @@
+import DayAvailability from '../../../../../appointments/domain/DayAvailability';
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
-import DayAvailability from './DayAvailability';
-
-import Role from './Role';
+import DayAvailabilityEntity from './DayAvailabilityEntity';
+import RoleEntity from './RoleEntity';
+import Role from '../../../../../users/domain/Role';
+import UserModel from '../../../../../users/domain/User';
 
 @Entity()
-class User {
+class User implements UserModel {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,11 +23,11 @@ class User {
   @Column()
   password: string;
 
-  @OneToOne(() => Role, { cascade: true, nullable: true })
+  @OneToOne(() => RoleEntity, { cascade: true, nullable: true })
   @JoinColumn()
   role: Role;
 
-  @OneToMany(() => DayAvailability, (dayAvailability) => dayAvailability.user, {
+  @OneToMany(() => DayAvailabilityEntity, (dayAvailability) => dayAvailability.user, {
     nullable: true,
   })
   @JoinColumn()

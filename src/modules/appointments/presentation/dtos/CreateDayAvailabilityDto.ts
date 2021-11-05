@@ -1,4 +1,4 @@
-import { DayOfWeek } from './../../../../models/DayAvailability';
+import { DayOfWeek } from '../../domain/DayAvailability';
 
 class CreateDayAvailabilityDto {
   day: DayOfWeek;

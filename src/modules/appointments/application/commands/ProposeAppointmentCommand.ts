@@ -1,9 +1,9 @@
-import { AppointmentStatusEnum } from './../../../../models/AppointmentStatus';
-import { proposeAppointment } from './../../domain/Appointment';
+import { AppointmentStatusEnum } from '../../domain/AppointmentStatus';
+import AppointmentsService from '../../domain/services/AppointmentService';
 import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import UserRepository from '../../../../modules/users/infrastructure/repos/UserRepository';
-import Appointment from '../../../../models/Appointment';
+import Appointment from '../../domain/Appointment';
 import AppointmentRepository from '../../infrastructure/repos/AppointmentRepository';
 import AppointmentStatusRepository from '../../infrastructure/repos/AppointmentStatusRepository';
 
@@ -40,7 +40,7 @@ class ProposeAppointmentCommandHandler implements Handler<ProposeAppointmentComm
     appointment.student = student;
     appointment.status = status;
 
-    proposeAppointment(appointment);
+    AppointmentsService(appointment).proposeAppointment();
 
     await this._appointmentsRepo.save(appointment);
 

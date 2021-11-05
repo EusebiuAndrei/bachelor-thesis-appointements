@@ -2,12 +2,11 @@ import { LOGGER_SYMBOL } from './../application/logger/ILogger';
 import ILogger from '../application/logger/ILogger';
 import { BaseLauncher, expressProfiler, memProfiler } from '@eusebiu_gagea/mem';
 import Server from './Server';
-import HelloIocSetup from '../../hello/IocSetup';
 import UsersIocSetup from '../../users/infrastructure/IocSetup';
 import AppointmentsIocSetup from '../../appointments/infrastructure/IocSetup';
 import path from 'path';
 import { Connection, createConnection, getConnectionOptions } from 'typeorm';
-import models from '../../../models';
+import models from './db/typeorm/schemas';
 import IEmailService from '../application/email/IEmalService';
 import EmailService from './email/EmailService';
 import logger from './logger/Logger';
@@ -22,7 +21,6 @@ class Launcher extends BaseLauncher {
     this.container.bind<IEmailService>(EmailService).toDynamicValue(() => new EmailService());
     this.container.bind<ILogger>(LOGGER_SYMBOL).toDynamicValue(() => logger);
 
-    await HelloIocSetup(this.container);
     await UsersIocSetup(this.container);
     await AppointmentsIocSetup(this.container);
 
