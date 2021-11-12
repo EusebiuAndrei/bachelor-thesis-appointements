@@ -57,6 +57,8 @@ https://github.com/stemmlerjs/white-label
 https://github.com/stemmlerjs/ddd-forum 
 https://adico.tech/2019/12/06/clean-%F0%9F%A7%BC-architectured-rest-api-using-nestjs-as-3rd-party-%F0%9F%A5%B3/#fromHistory
 
+Important
+https://enterprisecraftsmanship.com/posts/cqrs-commands-part-domain-model/
 
 Professor token
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM1OTU1NDg1LCJleHAiOjE2NDU5NTU0ODV9.m3RanYpsPxItQowxSGXMrFZwPBliQZ_SJVSE-hctycs

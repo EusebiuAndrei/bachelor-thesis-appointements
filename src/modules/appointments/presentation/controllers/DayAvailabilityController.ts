@@ -13,7 +13,7 @@ import {
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { authorize } from '../../../shared/infra/http/middlewares';
-import CreateDayAvailabilityDto from '../dtos/CreateDayAvailabilityDto';
+import { CreateDayAvailabilityRequestDto } from '../dtos/requests';
 
 @injectable()
 @Controller('day-availability')
@@ -34,7 +34,7 @@ class DayAvailabilityController {
   @Post()
   public async create(req: Request, res: Response) {
     const userId = (req.user as any).id;
-    const createDayAvailabilityDto = req.body as CreateDayAvailabilityDto;
+    const createDayAvailabilityDto = req.body as CreateDayAvailabilityRequestDto;
 
     const result = await this._mediator.send(
       createEvent(CreateDayAvailabilityCommand, { ...createDayAvailabilityDto, userId }),
