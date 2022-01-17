@@ -1,6 +1,6 @@
 import { LOGGER_SYMBOL } from './../application/logger/ILogger';
 import ILogger from '../application/logger/ILogger';
-import { BaseLauncher, expressProfiler, memProfiler } from '@eusebiu_gagea/mem';
+import { BaseLauncher, ExpressIocSetup, MemIocSetup } from '@eusebiu_gagea/mem';
 import Server from './Server';
 import UsersIocSetup from '../../users/infrastructure/IocSetup';
 import AppointmentsIocSetup from '../../appointments/infrastructure/IocSetup';
@@ -24,8 +24,8 @@ class Launcher extends BaseLauncher {
     await UsersIocSetup(this.container);
     await AppointmentsIocSetup(this.container);
 
-    await memProfiler(this, { rootDirectory: path.join(__dirname, '..', '..', '..', 'modules') });
-    await expressProfiler(this, Server, { rootDirectory: path.join(__dirname, '..', '..', '..') });
+    await MemIocSetup(this, { rootDirectory: path.join(__dirname, '..', '..', '..', 'modules') });
+    await ExpressIocSetup(this, Server, { rootDirectory: path.join(__dirname, '..', '..', '..') });
   }
 }
 
