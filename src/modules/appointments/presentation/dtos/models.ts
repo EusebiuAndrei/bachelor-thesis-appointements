@@ -1,5 +1,5 @@
 import { UserDto } from './../../../users/presentation/dtos/models';
-import { DayOfWeek } from './../../domain/DayAvailability';
+import { DayOfWeek } from './../../domain/entities/DayAvailability';
 
 export class AppointmentDto {
   id: number;

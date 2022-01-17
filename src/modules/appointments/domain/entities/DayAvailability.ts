@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import User from '../../users/domain/User';
+import User from '../../../users/domain/entities/User';
 
 export type DayOfWeek =
   | 'Monday'

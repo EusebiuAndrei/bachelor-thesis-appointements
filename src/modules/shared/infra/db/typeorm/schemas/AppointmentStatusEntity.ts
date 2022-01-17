@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import AppointmentStatusModel from '../../../../../appointments/domain/AppointmentStatus';
+import AppointmentStatusModel from '../../../../../appointments/domain/entities/AppointmentStatus';
 
 @Entity()
 class AppointmentStatus implements AppointmentStatusModel {

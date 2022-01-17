@@ -1,5 +1,5 @@
 import AppointmentStatus from './AppointmentStatus';
-import User from '../../users/domain/User';
+import User from '../../../users/domain/entities/User';
 
 class Appointment {
   id: number;

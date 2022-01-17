@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import RoleModel from '../../../../../users/domain/Role';
+import RoleModel from '../../../../../users/domain/entities/Role';
 
 @Entity()
 class Role implements RoleModel {

@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { EntityRepository, Repository } from 'typeorm';
-import User from '../../domain/User';
+import User from '../../domain/entities/User';
 import UserEntity from '../../../shared/infra/db/typeorm/schemas/UserEntity';
 
 @injectable()

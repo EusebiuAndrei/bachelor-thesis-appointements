@@ -1,5 +1,5 @@
 import { ProfessorRestrictedException } from '../exceptions';
-import User from '../User';
+import User from '../entities/User';
 
 export const isStudent = (user: User) => user.role.code === 'STUDENT';
 export const isProfessor = (user: User) => user.role.code === 'PROFESSOR';

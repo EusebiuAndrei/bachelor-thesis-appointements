@@ -1,6 +1,6 @@
 import UserService from '../../../users/domain/services/UserService';
 import { ProfessorRestrictedException } from '../../../users/domain/exceptions';
-import Appointment from '../Appointment';
+import Appointment from '../entities/Appointment';
 import {
   AppointmentDurationExceededException,
   AppointmentNotProposedByStudentException,
