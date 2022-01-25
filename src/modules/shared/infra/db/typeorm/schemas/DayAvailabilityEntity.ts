@@ -1,9 +1,9 @@
-import { DayOfWeek } from '../../../../../appointments/domain/DayAvailability';
+import { DayOfWeek } from '../../../../../appointments/domain/entities/DayAvailability';
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import UserEntity from './UserEntity';
-import User from '../../../../../users/domain/User';
-import DayAvailabilityModel from '../../../../../appointments/domain/DayAvailability';
+import User from '../../../../../users/domain/entities/User';
+import DayAvailabilityModel from '../../../../../appointments/domain/entities/DayAvailability';
 
 @Entity({ name: 'day_availability' })
 class DayAvailability implements DayAvailabilityModel {

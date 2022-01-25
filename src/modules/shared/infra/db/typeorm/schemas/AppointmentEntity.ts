@@ -1,10 +1,10 @@
-import AppointmentStatus from '../../../../../appointments/domain/AppointmentStatus';
+import AppointmentStatus from '../../../../../appointments/domain/entities/AppointmentStatus';
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
 import AppointmentStatusEntity from './AppointmentStatusEntity';
 import UserEntity from './UserEntity';
-import User from '../../../../../users/domain/User';
-import Appointment from '../../../../../appointments/domain/Appointment';
+import User from '../../../../../users/domain/entities/User';
+import Appointment from '../../../../../appointments/domain/entities/Appointment';
 
 @Entity({ name: 'appointment' })
 class AppointmentEntity implements Appointment {

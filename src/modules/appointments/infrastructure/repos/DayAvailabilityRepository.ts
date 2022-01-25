@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { EntityRepository, Repository } from 'typeorm';
-import DayAvailability from '../../domain/DayAvailability';
+import DayAvailability from '../../domain/entities/DayAvailability';
 import DayAvailabilityEntity from '../../../shared/infra/db/typeorm/schemas/DayAvailabilityEntity';
 
 @injectable()

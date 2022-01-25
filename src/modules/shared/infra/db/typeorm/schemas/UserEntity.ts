@@ -1,10 +1,10 @@
-import DayAvailability from '../../../../../appointments/domain/DayAvailability';
+import DayAvailability from '../../../../../appointments/domain/entities/DayAvailability';
 import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import DayAvailabilityEntity from './DayAvailabilityEntity';
 import RoleEntity from './RoleEntity';
-import Role from '../../../../../users/domain/Role';
-import UserModel from '../../../../../users/domain/User';
+import Role from '../../../../../users/domain/entities/Role';
+import UserModel from '../../../../../users/domain/entities/User';
 
 @Entity({ name: 'user' })
 class User implements UserModel {

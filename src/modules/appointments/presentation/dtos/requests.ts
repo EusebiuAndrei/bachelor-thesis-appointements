@@ -1,4 +1,4 @@
-import { DayOfWeek } from '../../domain/DayAvailability';
+import { DayOfWeek } from '../../domain/entities/DayAvailability';
 
 export class CreateDayAvailabilityRequestDto {
   day: DayOfWeek;

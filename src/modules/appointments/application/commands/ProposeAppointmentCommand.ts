@@ -1,9 +1,9 @@
-import { AppointmentStatusEnum } from '../../domain/AppointmentStatus';
+import { AppointmentStatusEnum } from '../../domain/entities/AppointmentStatus';
 import AppointmentsService from '../../domain/services/AppointmentService';
 import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import UserRepository from '../../../../modules/users/infrastructure/repos/UserRepository';
-import Appointment from '../../domain/Appointment';
+import Appointment from '../../domain/entities/Appointment';
 import AppointmentRepository from '../../infrastructure/repos/AppointmentRepository';
 import AppointmentStatusRepository from '../../infrastructure/repos/AppointmentStatusRepository';
 

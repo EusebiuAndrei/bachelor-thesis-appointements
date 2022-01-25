@@ -1,5 +1,5 @@
 import { AppointmentStatusChangedEvent } from './../events/AppointmentStatusChangedEvent';
-import { AppointmentStatusEnum } from '../../domain/AppointmentStatus';
+import { AppointmentStatusEnum } from '../../domain/entities/AppointmentStatus';
 import AppointmentsService from '../../domain/services/AppointmentService';
 import { Handler, CommandHandler, Command, MemMediator, createEvent } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';

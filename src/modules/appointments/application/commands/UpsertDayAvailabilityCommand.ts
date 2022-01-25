@@ -1,4 +1,4 @@
-import DayAvailability, { DayOfWeek } from '../../domain/DayAvailability';
+import DayAvailability, { DayOfWeek } from '../../domain/entities/DayAvailability';
 import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import UserRepository from '../../../users/infrastructure/repos/UserRepository';

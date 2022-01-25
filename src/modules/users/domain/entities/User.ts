@@ -1,4 +1,4 @@
-import DayAvailability from '../../appointments/domain/DayAvailability';
+import DayAvailability from '../../../appointments/domain/entities/DayAvailability';
 import Role from './Role';
 
 class User {
