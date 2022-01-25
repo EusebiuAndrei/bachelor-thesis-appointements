@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import AppointmentStatusModel from '../../../../../appointments/domain/AppointmentStatus';
 
-@Entity()
+@Entity({ name: 'appointment_status' })
 class AppointmentStatus implements AppointmentStatusModel {
   @PrimaryGeneratedColumn()
   id: number;

@@ -5,7 +5,7 @@ import UserEntity from './UserEntity';
 import User from '../../../../../users/domain/User';
 import DayAvailabilityModel from '../../../../../appointments/domain/DayAvailability';
 
-@Entity()
+@Entity({ name: 'day_availability' })
 class DayAvailability implements DayAvailabilityModel {
   @PrimaryGeneratedColumn()
   id: number;

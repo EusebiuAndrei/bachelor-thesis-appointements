@@ -1,5 +1,6 @@
 import { Handler, QueryHandler, Query } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
+import UserMapper from '../../infrastructure/mappers/UserMapper';
 import UserRepository from '../../infrastructure/repos/UserRepository';
 
 @Query()
@@ -16,7 +17,7 @@ class GetUserByIdQueryHandler implements Handler<GetUserByIdQuery, any> {
       relations: ['role'],
     });
 
-    return user;
+    return UserMapper.toDto(user);
   }
 }
 

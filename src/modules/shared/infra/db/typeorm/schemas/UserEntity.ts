@@ -6,7 +6,7 @@ import RoleEntity from './RoleEntity';
 import Role from '../../../../../users/domain/Role';
 import UserModel from '../../../../../users/domain/User';
 
-@Entity()
+@Entity({ name: 'user' })
 class User implements UserModel {
   @PrimaryGeneratedColumn()
   id: number;

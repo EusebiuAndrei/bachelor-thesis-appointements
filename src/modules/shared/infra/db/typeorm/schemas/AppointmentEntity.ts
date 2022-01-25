@@ -6,7 +6,7 @@ import UserEntity from './UserEntity';
 import User from '../../../../../users/domain/User';
 import Appointment from '../../../../../appointments/domain/Appointment';
 
-@Entity()
+@Entity({ name: 'appointment' })
 class AppointmentEntity implements Appointment {
   @PrimaryGeneratedColumn()
   id: number;

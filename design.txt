@@ -60,10 +60,9 @@ https://adico.tech/2019/12/06/clean-%F0%9F%A7%BC-architectured-rest-api-using-ne
 Important
 https://enterprisecraftsmanship.com/posts/cqrs-commands-part-domain-model/
 
-Professor token
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjM1OTU1NDg1LCJleHAiOjE2NDU5NTU0ODV9.m3RanYpsPxItQowxSGXMrFZwPBliQZ_SJVSE-hctycs
 
-Student token
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM1OTU1NTI2LCJleHAiOjE2NDU5NTU1MjZ9.cDJCxv42o1Hwtwrv05Xy7TXXHsecMmgoqHb9F9r5EQ4
+Student | Andrew Murphy | userId: 9
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTY0MzE0NzgxMCwiZXhwIjoxNjUzMTQ3ODEwfQ.UFKyrbRxHbNYV7Z3D100h7QSg-ey13RjRjxCosLfaUs
 
-
+Professor | Scott Addams | userId: 10
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTY0MzE0NzU3NCwiZXhwIjoxNjUzMTQ3NTc0fQ.KFA6Zr9ACf8WnqtM3ceQO1p42duVOF7tEUkLBvxYvEM

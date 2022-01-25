@@ -1,5 +1,5 @@
 import { GetDaysAvailabilityQuery } from './../../application/queries/GetDaysAvailabilityQuery';
-import { CreateDayAvailabilityCommand } from './../../application/commands/CreateDayAvailabilityCommand';
+import { UpsertDayAvailabilityCommand } from '../../application/commands/UpsertDayAvailabilityCommand';
 import {
   Controller,
   Post,
@@ -37,7 +37,7 @@ class DayAvailabilityController {
     const createDayAvailabilityDto = req.body as CreateDayAvailabilityRequestDto;
 
     const result = await this._mediator.send(
-      createEvent(CreateDayAvailabilityCommand, { ...createDayAvailabilityDto, userId }),
+      createEvent(UpsertDayAvailabilityCommand, { ...createDayAvailabilityDto, userId }),
     );
 
     return HttpCreated(result);

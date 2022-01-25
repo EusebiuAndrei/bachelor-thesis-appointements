@@ -6,7 +6,7 @@ import DayAvailabilityRepository from '../../infrastructure/repos/DayAvailabilit
 import UserService from '../../../users/domain/services/UserService';
 
 @Command()
-export class CreateDayAvailabilityCommand {
+export class UpsertDayAvailabilityCommand {
   day: DayOfWeek;
   hours: number;
   minutes: number;
@@ -15,17 +15,20 @@ export class CreateDayAvailabilityCommand {
 }
 
 @injectable()
-@CommandHandler(CreateDayAvailabilityCommand)
-class CreateDayAvailabilityCommandHandler implements Handler<CreateDayAvailabilityCommand, any> {
+@CommandHandler(UpsertDayAvailabilityCommand)
+class UpsertDayAvailabilityCommandHandler implements Handler<UpsertDayAvailabilityCommand, any> {
   @inject(DayAvailabilityRepository) private _dayAvailabilityRepo: DayAvailabilityRepository;
   @inject(UserRepository) private _userRepo: UserRepository;
 
-  async handle(command: CreateDayAvailabilityCommand) {
+  async handle(command: UpsertDayAvailabilityCommand) {
     const user = await this._userRepo.findOne(command.userId, { relations: ['role'] });
-    console.log(user);
+    const existingDayAvailability = await this._dayAvailabilityRepo.findOne({ day: command.day });
+
     UserService(user).checkProfessor();
 
-    const dayAvailability = new DayAvailability();
+    const dayAvailability = existingDayAvailability
+      ? existingDayAvailability
+      : new DayAvailability();
     dayAvailability.day = command.day;
     dayAvailability.hours = command.hours;
     dayAvailability.minutes = command.minutes;
@@ -34,8 +37,8 @@ class CreateDayAvailabilityCommandHandler implements Handler<CreateDayAvailabili
 
     await this._dayAvailabilityRepo.save(dayAvailability);
 
-    return dayAvailability;
+    return true;
   }
 }
 
-export default CreateDayAvailabilityCommandHandler;
+export default UpsertDayAvailabilityCommandHandler;
