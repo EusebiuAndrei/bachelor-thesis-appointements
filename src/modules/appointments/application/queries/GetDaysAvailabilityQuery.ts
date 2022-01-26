@@ -15,7 +15,6 @@ class GetDaysAvailabilityQueryHandler implements Handler<GetDaysAvailabilityQuer
   @inject(DayAvailabilityRepository) private _dayAvailabilityRepository: DayAvailabilityRepository;
 
   async handle(query: GetDaysAvailabilityQuery) {
-    console.log('USER_ID', query.userId);
     const result = await this._dayAvailabilityRepository.find({ user: { id: query.userId } });
     return result.sort(
       (a, b) => ascWeekDays.indexOf(a.day.toLowerCase()) - ascWeekDays.indexOf(b.day.toLowerCase()),

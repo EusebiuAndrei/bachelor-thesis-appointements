@@ -6,9 +6,8 @@ import { injectable } from 'inversify';
 import passport from 'passport';
 import { port } from '../../../config/index';
 import applyJWTStrategy from './http/auth/jwtStrategy';
-import { logErrors } from './http/middlewares';
+import { logErrors, domainExceptionsMiddleware } from './http/middlewares';
 import Logger from './logger/Logger';
-import domainExceptionsMiddleware from './http/middlewares/domainExceptionsMiddleware';
 
 export const corsUrl = process.env.CORS_URL;
 @injectable()

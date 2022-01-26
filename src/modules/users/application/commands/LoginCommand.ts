@@ -16,9 +16,6 @@ class LoginCommandHandler implements Handler<LoginCommand, any> {
   @inject(UserRepository) private _userRepo: UserRepository;
 
   async handle(command: LoginCommand) {
-    console.log('COMMAND Callback inside');
-    console.log(command);
-
     const { email, password } = command;
     const user = await this._userRepo.findOne({ email });
 
