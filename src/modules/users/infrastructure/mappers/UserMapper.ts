@@ -1,5 +1,5 @@
 import { UserDto } from './../../presentation/dtos/models';
-import User from '../../domain/User';
+import User from '../../domain/entities/User';
 
 class UserMapper {
   toDto(user: User): UserDto {

@@ -8,6 +8,7 @@ import { port } from '../../../config/index';
 import applyJWTStrategy from './http/auth/jwtStrategy';
 import { logErrors } from './http/middlewares';
 import Logger from './logger/Logger';
+import domainExceptionsMiddleware from './http/middlewares/domainExceptionsMiddleware';
 
 export const corsUrl = process.env.CORS_URL;
 @injectable()
@@ -29,6 +30,7 @@ class Server extends ExpressServer {
   }
 
   async setupErrorMiddlewares(): Promise<void> {
+    this.useErrorMiddleware(domainExceptionsMiddleware);
     this.useErrorMiddleware(logErrors);
   }
 }

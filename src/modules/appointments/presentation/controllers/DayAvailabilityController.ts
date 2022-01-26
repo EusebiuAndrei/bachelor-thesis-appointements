@@ -24,6 +24,7 @@ class DayAvailabilityController {
   @Get()
   public async findAll(req: Request, res: Response) {
     const userId = (req.user as any).id;
+    console.log('AUTH', req.headers['authorization']);
 
     const result = await this._mediator.send(createEvent(GetDaysAvailabilityQuery, { userId }));
 
