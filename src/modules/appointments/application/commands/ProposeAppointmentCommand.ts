@@ -30,7 +30,7 @@ class ProposeAppointmentCommandHandler implements Handler<ProposeAppointmentComm
     const student = await this._userRepo.findOne(command.studentId, {
       relations: ['role'],
     });
-    const status = await this._appointmentsStatusRepo.findOne(AppointmentStatusEnum.APPROVED);
+    const status = await this._appointmentsStatusRepo.findOne(AppointmentStatusEnum.PROPOSED);
 
     const appointment = new Appointment();
     appointment.startDate = command.startDate;

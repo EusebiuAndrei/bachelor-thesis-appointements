@@ -23,3 +23,17 @@ export class NotAppointmentParticipantException extends DomainException {
     super(`An appointment can be canceled only by a participant`);
   }
 }
+
+export class AppointmentProposedStatusRestrictedException extends DomainException {
+  constructor() {
+    super(`The appointment should be in PROPOSED status in order to perform this operation on it`);
+  }
+}
+
+export class AppointmentApprovedOrRejectedStatusRestrictedException extends DomainException {
+  constructor() {
+    super(
+      `The appointment should be in APPROVED or REJECTED status in order to perform this operation on it`,
+    );
+  }
+}

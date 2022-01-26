@@ -2,11 +2,14 @@ import UserService from '../../../users/domain/services/UserService';
 import { ProfessorRestrictedException } from '../../../users/domain/exceptions';
 import Appointment from '../entities/Appointment';
 import {
+  AppointmentApprovedOrRejectedStatusRestrictedException,
   AppointmentDurationExceededException,
   AppointmentNotProposedByStudentException,
   AppointmentNotSentToProfessorException,
+  AppointmentProposedStatusRestrictedException,
   NotAppointmentParticipantException,
 } from '../exceptions';
+import { AppointmentStatusEnum } from '../entities/AppointmentStatus';
 
 /*
   AppointmentProposedEvent -> handler for this to automatically Approve or Reject an Appointment
@@ -23,7 +26,7 @@ const AppointmentsService = (appointment: Appointment) => ({
       throw new AppointmentNotProposedByStudentException();
     }
 
-    if (UserService(appointment.student).isStudent) {
+    if (UserService(appointment.professor).isStudent) {
       throw new AppointmentNotSentToProfessorException();
     }
 
@@ -39,6 +42,10 @@ const AppointmentsService = (appointment: Appointment) => ({
     if (appointment.student.id === userId) {
       throw new ProfessorRestrictedException();
     }
+
+    if (appointment.status.id !== AppointmentStatusEnum.PROPOSED) {
+      throw new AppointmentProposedStatusRestrictedException();
+    }
   },
   rejectAppointment(userId: number) {
     if (appointment.professor.id !== userId && appointment.student.id !== userId) {
@@ -48,10 +55,18 @@ const AppointmentsService = (appointment: Appointment) => ({
     if (appointment.student.id === userId) {
       throw new ProfessorRestrictedException();
     }
+
+    if (appointment.status.id !== AppointmentStatusEnum.PROPOSED) {
+      throw new AppointmentProposedStatusRestrictedException();
+    }
   },
   cancelAppointment(userId: number) {
     if (appointment.professor.id !== userId && appointment.student.id !== userId) {
       throw new NotAppointmentParticipantException();
+    }
+
+    if (appointment.status.id !== AppointmentStatusEnum.PROPOSED) {
+      throw new AppointmentApprovedOrRejectedStatusRestrictedException();
     }
   },
 });

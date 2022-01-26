@@ -28,7 +28,7 @@ class CancelAppointmentCommandHandler implements Handler<CancelAppointmentComman
     );
     appointment.status = canceledStatus;
 
-    AppointmentsService(appointment).rejectAppointment(command.userId);
+    AppointmentsService(appointment).cancelAppointment(command.userId);
 
     await this._appointmentsRepo.save(appointment);
 

@@ -1,3 +1,4 @@
+import { GetAppointmentByIdQuery } from './../../application/queries/GetAppointmentByIdQuery';
 import { GetAppointmentsQuery } from './../../application/queries/GetAppointmentsQuery';
 import { RejectAppointmentCommand } from './../../application/commands/RejectAppointmentCommand';
 import { ApproveAppointmentCommand } from './../../application/commands/ApproveAppointmentCommand';
@@ -29,6 +30,17 @@ class AppointmentsController {
   public async getAppointments(req: Request, res: Response) {
     const userId = (req.user as any).id;
     const result = await this._mediator.send(createEvent(GetAppointmentsQuery, { userId }));
+
+    return HttpOk(result);
+  }
+
+  @Use(authorize)
+  @Get(':appointmentId')
+  public async getAppointmentById(req: Request, res: Response) {
+    const appointmentId = (req.params as any).appointmentId as number;
+    const result = await this._mediator.send(
+      createEvent(GetAppointmentByIdQuery, { appointmentId }),
+    );
 
     return HttpOk(result);
   }
