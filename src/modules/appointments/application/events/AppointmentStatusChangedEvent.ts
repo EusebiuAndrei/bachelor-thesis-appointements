@@ -1,19 +1,19 @@
 import { AppointmentStatusEnum } from '../../domain/entities/AppointmentStatus';
-import { Handler, CommandHandler, Command } from '@eusebiu_gagea/mem';
+import { Handler, EventHandler, Event } from '@eusebiu_gagea/mem';
 import { inject, injectable } from 'inversify';
 import AppointmentRepository from '../../infrastructure/repos/AppointmentRepository';
 import IEmailService from '../../../../modules/shared/application/email/IEmalService';
 import EmailService from '../../../../modules/shared/infra/email/EmailService';
 import Email from '../../../../modules/shared/application/email/Email';
 
-@Command()
+@Event()
 export class AppointmentStatusChangedEvent {
   appointmentId: number;
   userId: number;
 }
 
 @injectable()
-@CommandHandler(AppointmentStatusChangedEvent)
+@EventHandler(AppointmentStatusChangedEvent)
 class AppointmentStatusChangedEventHandler implements Handler<AppointmentStatusChangedEvent, any> {
   @inject(AppointmentRepository) private _appointmentsRepo: AppointmentRepository;
   @inject(EmailService) private _emailService: IEmailService;
